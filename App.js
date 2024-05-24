@@ -4,6 +4,8 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
+import GlobalStyleSheet from './GlobalStyleSheet';
+
 import AdminPanel from './Panels/AdminPanel';
 import TeacherPanel from './Panels/TeacherPanel';
 import StudentPanel from './Panels/StudentPanel';
@@ -13,21 +15,21 @@ const Stack = createNativeStackNavigator();
 
 const PanelSelection = ({ navigation }) => {
   return (
-    <SafeAreaView style = {styleSheet.background}>
+    <SafeAreaView style = {GlobalStyleSheet.background}>
       <Button
-      style = {styleSheet.myButton}
+      style = {GlobalStyleSheet.myButton}
       title="Go to Admin Panel"
       onPress={() => navigation.navigate('Admin Panel')}
       />
 
       <Button
-      style = {styleSheet.myButton}
+      style = {GlobalStyleSheet.myButton}
       title="Go to Teacher Panel"
       onPress={() => navigation.navigate('Teacher Panel')}
       />
 
       <Button
-      style = {styleSheet.myButton}
+      style = {GlobalStyleSheet.myButton}
       title="Go to Student Panel"
       onPress={() => navigation.navigate('Student Panel')}
       />
@@ -53,18 +55,5 @@ const App = () => {
     </NavigationContainer>
   );
 };
-
-const styleSheet = StyleSheet.create(
-  {
-      background: {
-        alignItems: 'center',
-        flex: 1,
-        justifyContent: 'center'  
-      },
-      myButton:{
-        marginVertical:50
-      },
-  }
-);
 
 export default App;

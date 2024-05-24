@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, StyleSheet, Text } from 'react-native';
+import { Button, PaperProvider} from 'react-native-paper';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -10,32 +10,7 @@ import AdminPanel from './Panels/AdminPanel';
 import TeacherPanel from './Panels/TeacherPanel';
 import StudentPanel from './Panels/StudentPanel';
 
-
 const Stack = createNativeStackNavigator();
-
-const PanelSelection = ({ navigation }) => {
-  return (
-    <SafeAreaView style = {GlobalStyleSheet.background}>
-      <Button
-      style = {GlobalStyleSheet.myButton}
-      title="Go to Admin Panel"
-      onPress={() => navigation.navigate('Admin Panel')}
-      />
-
-      <Button
-      style = {GlobalStyleSheet.myButton}
-      title="Go to Teacher Panel"
-      onPress={() => navigation.navigate('Teacher Panel')}
-      />
-
-      <Button
-      style = {GlobalStyleSheet.myButton}
-      title="Go to Student Panel"
-      onPress={() => navigation.navigate('Student Panel')}
-      />
-    </SafeAreaView>
-  );
-};
 
 const App = () => {
   return (
@@ -44,7 +19,7 @@ const App = () => {
         <Stack.Screen
           name="Panel Selection"
           component={PanelSelection}
-          options={{ title: 'Welcome' }}
+          options={{ title: 'Welcome to SMS' }}
         />
 
         <Stack.Screen name="Admin Panel" component={AdminPanel} />
@@ -55,5 +30,33 @@ const App = () => {
     </NavigationContainer>
   );
 };
+
+const PanelSelection = () => {
+  return (
+    <PaperProvider>
+    <SafeAreaView style = {GlobalStyleSheet.background}>
+
+      <PanelSelectionButton text="Go to Student Panel" panel="Student Panel"/>
+      <PanelSelectionButton text="Go to Admin Panel" panel="Admin Panel"/>
+      <PanelSelectionButton text="Go to Teacher Panel" panel="Teacher Panel"/>
+
+    </SafeAreaView>
+    </PaperProvider>
+  );
+};
+
+
+const PanelSelectionButton = ({text, panel}) => {
+  return(
+    <Button      
+      mode='elevated'
+      buttonColor='#875FF6'
+      textColor='white'
+      style = {GlobalStyleSheet.myButton}
+      onPress={() => navigation.navigate(panel)}>
+        {text}
+      </Button>
+  )
+}
 
 export default App;

@@ -7,7 +7,7 @@ const GlobalStyleSheet = StyleSheet.create(
           justifyContent: 'center'  
         },
         myButton:{
-          marginVertical:50
+          margin:5,
         },
     }
   );

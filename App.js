@@ -31,14 +31,14 @@ const App = () => {
   );
 };
 
-const PanelSelection = () => {
+const PanelSelection = ({navigation}) => {
   return (
     <PaperProvider>
     <SafeAreaView style = {GlobalStyleSheet.background}>
 
-      <PanelSelectionButton text="Go to Student Panel" panel="Student Panel"/>
-      <PanelSelectionButton text="Go to Admin Panel" panel="Admin Panel"/>
-      <PanelSelectionButton text="Go to Teacher Panel" panel="Teacher Panel"/>
+      <PanelSelectionButton text="Go to Student Panel" panel="Student Panel" navigation={navigation}/>
+      <PanelSelectionButton text="Go to Admin Panel" panel="Admin Panel" navigation={navigation}/>
+      <PanelSelectionButton text="Go to Teacher Panel" panel="Teacher Panel" navigation={navigation}/>
 
     </SafeAreaView>
     </PaperProvider>
@@ -46,7 +46,7 @@ const PanelSelection = () => {
 };
 
 
-const PanelSelectionButton = ({text, panel}) => {
+const PanelSelectionButton = ({text, panel, navigation}) => {
   return(
     <Button      
       mode='elevated'

@@ -11,6 +11,7 @@ import TeacherPanel from './screens/teacher/TeacherPanel';
 import StudentPanel from './screens/student/StudentPanel';
 import TeacherDashboard from './screens/teacher/TeacherDashboard';
 import MarkManagement from './screens/teacher/MarkManagement';
+import StudentDashboard from './screens/student/StudentDashboard';
 
 const Stack = createNativeStackNavigator();
 
@@ -26,9 +27,12 @@ const App = () => {
 
         <Stack.Screen name="Admin Panel" component={AdminPanel} />
         <Stack.Screen name="Teacher Panel" component={TeacherPanel} />
+
         <Stack.Screen name="TeacherDashboard" component={TeacherDashboard} />
         <Stack.Screen name="MarkManagement" component={MarkManagement} /> 
         <Stack.Screen name="Student Panel" component={StudentPanel} />
+
+        <Stack.Screen name="StudentDashboard" component={StudentDashboard} />
         
       </Stack.Navigator>
     </NavigationContainer>

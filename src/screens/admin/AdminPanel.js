@@ -1,4 +1,4 @@
-import GlobalStyleSheet from '../GlobalStyleSheet';
+import GlobalStyleSheet from '../../../GlobalStyleSheet';
 
 const AdminPanel = ({navigation}) => {
 

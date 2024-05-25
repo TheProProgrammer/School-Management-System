@@ -4,11 +4,11 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import GlobalStyleSheet from './GlobalStyleSheet';
+import GlobalStyleSheet from '../GlobalStyleSheet';
 
-import AdminPanel from './Panels/AdminPanel';
-import TeacherPanel from './Panels/TeacherPanel';
-import StudentPanel from './Panels/StudentPanel';
+import AdminPanel from './screens/admin/AdminPanel';
+import TeacherPanel from './screens/teacher/TeacherPanel';
+import StudentPanel from './screens/student/StudentPanel';
 
 const Stack = createNativeStackNavigator();
 

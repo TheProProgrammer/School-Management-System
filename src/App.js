@@ -9,6 +9,8 @@ import GlobalStyleSheet from '../GlobalStyleSheet';
 import AdminPanel from './screens/admin/AdminPanel';
 import TeacherPanel from './screens/teacher/TeacherPanel';
 import StudentPanel from './screens/student/StudentPanel';
+import TeacherDashboard from './screens/teacher/TeacherDashboard';
+import MarkManagement from './screens/teacher/MarkManagement';
 
 const Stack = createNativeStackNavigator();
 
@@ -24,8 +26,10 @@ const App = () => {
 
         <Stack.Screen name="Admin Panel" component={AdminPanel} />
         <Stack.Screen name="Teacher Panel" component={TeacherPanel} />
+        <Stack.Screen name="TeacherDashboard" component={TeacherDashboard} />
+        <Stack.Screen name="MarkManagement" component={MarkManagement} /> 
         <Stack.Screen name="Student Panel" component={StudentPanel} />
-
+        
       </Stack.Navigator>
     </NavigationContainer>
   );

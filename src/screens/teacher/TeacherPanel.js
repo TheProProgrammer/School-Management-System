@@ -12,38 +12,33 @@ const TeacherPanel = ({ navigation }) => {
    
 
   return (
-    <View style={styles.container}>
+    <View style={GlobalStyleSheet.container}>
       <Title>Teacher Login</Title>
       <TextInput
+      
         label="Email"
         value={email}
         onChangeText={setEmail}
-        style={styles.input}
+        style={GlobalStyleSheet.myInput}
       />
       <TextInput
+
         label="Password"
         value={password}
         onChangeText={setPassword}
         secureTextEntry
-        style={styles.input}
+        style={GlobalStyleSheet.myInput}
       />
-      <Button title="Login" onPress={() => navigation.navigate('TeacherDashboard')} style={styles.button}>Button </Button>
+      <Button
+        mode='elevated'
+        buttonColor='#875FF6'
+        textColor='white'
+        onPress={() => navigation.navigate('TeacherDashboard')} 
+        style={GlobalStyleSheet.myButton}>
+          Login 
+      </Button>
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    padding: 16,
-  },
-  input: {
-    marginBottom: 16, 
-  },
-  button: {
-    marginTop: 16,
-  },
-});
 
 export default TeacherPanel;

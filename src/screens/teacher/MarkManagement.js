@@ -1,69 +1,88 @@
 import React, { useState } from 'react';
-import { View, StyleSheet, FlatList } from 'react-native';
-import { TextInput, Button, Card, Title } from 'react-native-paper';
-
-const studentsData = [
-  { id: '1', name: 'Student 1', marks: '' },
-  { id: '2', name: 'Student 2', marks: '' },
-  // Add more student data here
-];
-
-const MarkManagement = () => {
-  const [students, setStudents] = useState(studentsData);
+import { View, StyleSheet, FlatList, TextInput } from 'react-native';
+import { Button, Title, Text, Menu, Provider, Divider } from 'react-native-paper';
+import styles from '../../../GlobalStyleSheet';
+const MarkManagement = ({ navigation }) => {
+  const [term, setTerm] = useState('First');
+  const [menuVisible, setMenuVisible] = useState(false);
+  const [students, setStudents] = useState([
+    { id: '1', name: 'Student 1', firstTermMarks: '', midTermMarks: '', finalTermMarks: '' },
+    { id: '2', name: 'Student 2', firstTermMarks: '', midTermMarks: '', finalTermMarks: '' },
+    // Add more student data here
+  ]);
 
   const handleMarkChange = (id, marks) => {
-    const updatedStudents = students.map(student =>
-      student.id === id ? { ...student, marks } : student
-    );
-    setStudents(updatedStudents);
+    setStudents(students.map(student => {
+      if (student.id === id) {
+        if (term === 'First') {
+          return { ...student, firstTermMarks: marks };
+        } else if (term === 'Mid') {
+          return { ...student, midTermMarks: marks };
+        } else if (term === 'Final') {
+          return { ...student, finalTermMarks: marks };
+        }
+      }
+      return student;
+    }));
   };
 
-  const handleSave = () => {
-    // Add save logic here 
-    console.log('Marks saved:', students);
-  };
+  const renderStudent = ({ item }) => (
+    <View style={styles.studentRow}>
+      <Text style={styles.studentName}>{item.name}</Text>
+      <TextInput
+        style={styles.marksInput}
+        value={term === 'First' ? item.firstTermMarks : term === 'Mid' ? item.midTermMarks : item.finalTermMarks}
+        onChangeText={(text) => handleMarkChange(item.id, text)}
+        keyboardType="numeric"
+      />
+    </View>
+  );
 
   return (
-    <View style={styles.container}>
-      <FlatList
-        data={students}
-        keyExtractor={item => item.id}
-        renderItem={({ item }) => (
-          <Card style={styles.card}>
-            <Card.Content>
-              <Title>{item.name}</Title>
-              <TextInput
-                label="Marks"
-                value={item.marks}
-                onChangeText={(text) => handleMarkChange(item.id, text)}
-                keyboardType="numeric"
-                style={styles.input}
-              />
-            </Card.Content>
-          </Card>
-        )}
-      />
-      <Button mode="contained" onPress={handleSave} style={styles.button}>
-        Save Marks
-      </Button>
-    </View>
+    <Provider>
+      <View style={styles.container}>
+        <Title>Mark Management</Title>
+
+        <View style={styles.menuContainer}>
+          <Menu
+            visible={menuVisible}
+            onDismiss={() => setMenuVisible(false)}
+            anchor={
+              <Button mode="outlined" onPress={() => setMenuVisible(true)}>
+                {term}
+              </Button>
+            }
+          >
+            <Menu.Item onPress={() => setTerm('First')} title="First Term" />
+            <Menu.Item onPress={() => setTerm('Mid')} title="Mid Term" />
+            <Menu.Item onPress={() => setTerm('Final')} title="Final Term" />
+          </Menu>
+        </View>
+
+        <FlatList
+          data={students}
+          renderItem={renderStudent}
+          keyExtractor={item => item.id}
+          style={styles.studentList}
+        />
+<View style={styles.buttonColumn}> 
+<View style={styles.buttonRow}>
+          <Button mode="contained" style={styles.button}>Search</Button>
+          <Button mode="contained" style={styles.button}>Insert</Button>
+          
+        </View>
+        <View style={styles.buttonRow}>
+        <Button mode="contained" style={styles.button}>Update</Button>
+          <Button mode="contained" style={styles.button}>Delete</Button>
+          </View>
+          </View> 
+      </View>
+    </Provider>
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 16,
-  },
-  card: {
-    marginVertical: 8,
-  },
-  input: {
-    marginTop: 8,
-  },
-  button: {
-    marginTop: 16,
-  },
-});
+ 
+ 
 
 export default MarkManagement;
+ 

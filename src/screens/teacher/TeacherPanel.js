@@ -31,7 +31,7 @@ const TeacherPanel = ({ navigation }) => {
       />
       <Button
         mode='elevated'
-        buttonColor='#875FF6'
+         
         textColor='white'
         onPress={() => navigation.navigate('TeacherDashboard')} 
         style={GlobalStyleSheet.myButton}>

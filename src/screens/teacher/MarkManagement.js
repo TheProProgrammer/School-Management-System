@@ -8,6 +8,13 @@ const MarkManagement = ({ navigation }) => {
   const [students, setStudents] = useState([
     { id: '1', name: 'Student 1', firstTermMarks: '', midTermMarks: '', finalTermMarks: '' },
     { id: '2', name: 'Student 2', firstTermMarks: '', midTermMarks: '', finalTermMarks: '' },
+    { id: '2', name: 'Student 2', firstTermMarks: '', midTermMarks: '', finalTermMarks: '' },
+    { id: '2', name: 'Student 2', firstTermMarks: '', midTermMarks: '', finalTermMarks: '' },
+    { id: '2', name: 'Student 2', firstTermMarks: '', midTermMarks: '', finalTermMarks: '' },
+    { id: '2', name: 'Student 2', firstTermMarks: '', midTermMarks: '', finalTermMarks: '' },
+    { id: '2', name: 'Student 2', firstTermMarks: '', midTermMarks: '', finalTermMarks: '' },
+    { id: '2', name: 'Student 2', firstTermMarks: '', midTermMarks: '', finalTermMarks: '' },
+    { id: '2', name: 'Student 2', firstTermMarks: '', midTermMarks: '', finalTermMarks: '' },
     // Add more student data here
   ]);
 
@@ -36,19 +43,20 @@ const MarkManagement = ({ navigation }) => {
         keyboardType="numeric"
       />
     </View>
+    
   );
 
   return (
     <Provider>
       <View style={styles.container}>
-        <Title>Mark Management</Title>
+      <Title style={styles.title}>Mark Management</Title>
 
         <View style={styles.menuContainer}>
           <Menu
             visible={menuVisible}
             onDismiss={() => setMenuVisible(false)}
             anchor={
-              <Button mode="outlined" onPress={() => setMenuVisible(true)}>
+              <Button textColor='white' style={styles.myButton}  mode="outlined" onPress={() => setMenuVisible(true)}>
                 {term}
               </Button>
             }
@@ -67,13 +75,13 @@ const MarkManagement = ({ navigation }) => {
         />
 <View style={styles.buttonColumn}> 
 <View style={styles.buttonRow}>
-          <Button mode="contained" style={styles.button}>Search</Button>
-          <Button mode="contained" style={styles.button}>Insert</Button>
+          <Button textColor='white' mode="contained" style={styles.button}>Search</Button>
+          <Button textColor='white'  mode="contained" style={styles.button}>Insert</Button>
           
         </View>
         <View style={styles.buttonRow}>
-        <Button mode="contained" style={styles.button}>Update</Button>
-          <Button mode="contained" style={styles.button}>Delete</Button>
+        <Button textColor='white'  mode="contained" style={styles.button}>Update</Button>
+          <Button textColor='white'  mode="contained" style={styles.button}>Delete</Button>
           </View>
           </View> 
       </View>

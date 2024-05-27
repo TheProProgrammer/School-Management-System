@@ -9,7 +9,8 @@ const TeacherDashboard = ({ navigation }) => {
        
        
       <Button
-        
+         mode='elevated'
+         textColor='white'
         onPress={() => navigation.navigate('MarkManagement')}
         style={styles.myButton}
       >

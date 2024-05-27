@@ -62,7 +62,6 @@ const GlobalStyleSheet = StyleSheet.create(
     padding:5,
     
       },
-       
       button: {
         flex: 1,
         marginHorizontal: 5,
@@ -71,7 +70,26 @@ const GlobalStyleSheet = StyleSheet.create(
       title: {
         color: '#222E45', // Dark font color (change this to your desired color)
       }, 
-       
+
+      row: {
+        flexDirection: 'row',
+        borderBottomWidth: 1,
+        borderBottomColor: '#ccc',
+      },
+      headerRow: {
+        backgroundColor: '#f8f8f8',
+      },
+      cell: {
+        flex: 1,
+        padding: 10,
+        textAlign: 'center',
+      },
+      headerCell: {
+        flex: 1,
+        padding: 10,
+        fontWeight: 'bold',
+        textAlign: 'center',
+      },
     }
-  );
+);
   export default GlobalStyleSheet

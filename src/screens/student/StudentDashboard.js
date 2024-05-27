@@ -11,8 +11,8 @@ const StudentDashboard = ({ navigation }) => {
       mode='elevated'
       buttonColor='#875FF6'
       textColor='white'
-        onPress={() => {}}
-        style={GlobalStyleSheet.myButton}
+      onPress={() => navigation.navigate('StudentManageMarks')} 
+      style={GlobalStyleSheet.myButton}
       >
         Manage Marks
       </Button>
@@ -20,8 +20,8 @@ const StudentDashboard = ({ navigation }) => {
       mode='elevated'
       buttonColor='#875FF6'
       textColor='white'
-        onPress={() => {}}
-        style={GlobalStyleSheet.myButton}
+      onPress={() => navigation.navigate('StudentManageFees')} 
+      style={GlobalStyleSheet.myButton}
       >
         Manage Fees
       </Button>
@@ -29,8 +29,8 @@ const StudentDashboard = ({ navigation }) => {
       mode='elevated'
       buttonColor='#875FF6'
       textColor='white'
-        onPress={() => {}}
-        style={GlobalStyleSheet.myButton}
+      onPress={() => navigation.navigate('StudentManageTimeTable')} 
+      style={GlobalStyleSheet.myButton}
       >
         Manage TimeTable
       </Button>
@@ -38,8 +38,8 @@ const StudentDashboard = ({ navigation }) => {
       mode='elevated'
       buttonColor='#875FF6'
       textColor='white'
-        onPress={() => {}}
-        style={GlobalStyleSheet.myButton}
+      onPress={() => navigation.navigate('StudentManageSyllabus')} 
+      style={GlobalStyleSheet.myButton}
       >
         Manage Syllabus
       </Button>

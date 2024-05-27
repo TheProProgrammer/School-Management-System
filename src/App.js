@@ -12,6 +12,10 @@ import StudentPanel from './screens/student/StudentPanel';
 import TeacherDashboard from './screens/teacher/TeacherDashboard';
 import MarkManagement from './screens/teacher/MarkManagement';
 import StudentDashboard from './screens/student/StudentDashboard';
+import StudentManageMarks from './screens/student/StudentManageMarks';
+import StudentManageFees from './screens/student/StudentManageFees';
+import StudentManageTimeTable from './screens/student/StudentManageTimeTable';
+import StudentManageSyllabus from './screens/student/StudentManageSyllabus';
 
 const Stack = createNativeStackNavigator();
 
@@ -33,6 +37,10 @@ const App = () => {
         <Stack.Screen name="Student Panel" component={StudentPanel} />
 
         <Stack.Screen name="StudentDashboard" component={StudentDashboard} />
+        <Stack.Screen name="StudentManageMarks" component={StudentManageMarks} />
+        <Stack.Screen name="StudentManageFees" component={StudentManageFees} />
+        <Stack.Screen name="StudentManageTimeTable" component={StudentManageTimeTable} />
+        <Stack.Screen name="StudentManageSyllabus" component={StudentManageSyllabus} />
         
       </Stack.Navigator>
     </NavigationContainer>

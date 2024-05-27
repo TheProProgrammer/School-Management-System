@@ -32,15 +32,15 @@ const App = () => {
         <Stack.Screen name="Admin Panel" component={AdminPanel} />
         <Stack.Screen name="Teacher Panel" component={TeacherPanel} />
 
-        <Stack.Screen name="TeacherDashboard" component={TeacherDashboard} />
-        <Stack.Screen name="MarkManagement" component={MarkManagement} /> 
+        <Stack.Screen name="Teacher Dashboard" component={TeacherDashboard} />
+        <Stack.Screen name="Mark Management" component={MarkManagement} /> 
         <Stack.Screen name="Student Panel" component={StudentPanel} />
 
-        <Stack.Screen name="StudentDashboard" component={StudentDashboard} />
-        <Stack.Screen name="StudentManageMarks" component={StudentManageMarks} />
-        <Stack.Screen name="StudentManageFees" component={StudentManageFees} />
-        <Stack.Screen name="StudentManageTimeTable" component={StudentManageTimeTable} />
-        <Stack.Screen name="StudentManageSyllabus" component={StudentManageSyllabus} />
+        <Stack.Screen name="Student Dashboard" component={StudentDashboard} />
+        <Stack.Screen name="Student Manage Marks" component={StudentManageMarks} />
+        <Stack.Screen name="Student Manage Fees" component={StudentManageFees} />
+        <Stack.Screen name="Student Manage TimeTable" component={StudentManageTimeTable} />
+        <Stack.Screen name="Student Manage Syllabus" component={StudentManageSyllabus} />
         
       </Stack.Navigator>
     </NavigationContainer>

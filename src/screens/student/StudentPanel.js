@@ -29,7 +29,7 @@ const StudentPanel = ({navigation}) => {
       mode='elevated'
       buttonColor='#875FF6'
       textColor='white'
-        onPress={() => navigation.navigate('StudentDashboard')} 
+        onPress={() => navigation.navigate('Student Dashboard')} 
         style={GlobalStyleSheet.myButton}>
         Login
         </Button>

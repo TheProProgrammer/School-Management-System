@@ -3,7 +3,7 @@ import { Button, PaperProvider} from 'react-native-paper';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { SafeAreaView } from 'react-native-safe-area-context';
-
+import {Image,View,Text,Alert,StyleSheet} from "react-native"
 import GlobalStyleSheet from '../GlobalStyleSheet';
 
 import AdminPanel from './screens/admin/AdminPanel';
@@ -12,21 +12,102 @@ import StudentPanel from './screens/student/StudentPanel';
 
 const Stack = createNativeStackNavigator();
 
+const styles = StyleSheet.create({
+  header:{
+    flex:1,
+    backgroundColor:"red",
+    width:"200px",
+    height:"10px",
+
+  }
+})
+const CustomHeader = (props)=>{
+
+  <> 
+    <View style={styles.header}>
+    
+      <Text>hiiii</Text>
+    
+    </View>
+  </>
+}
 const App = () => {
   return (
+
+
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Panel Selection">
+    
+    
+      <Stack.Navigator
+       initialRouteName="Panel Selection"
+       screenOptions={{
+      
+        headerShown: true,
+        headerTitle:"",
+        headerLeft: () => (
+          <Image
+            style={{
+                width:30,
+                height:30,
+                
+            }}
+            source={require("./assets/menu.png")}
+          />
+        ),
+        headerRight: () => (
+          <View
+            style={{
+              borderRadius:30,
+              borderColor:"#5D57D3",
+              borderWidth:5,
+              // padding:5,
+              shadowOpacity:0.4,
+              elevation:10
+
+
+            }}
+          >
+          <Image
+            style={{
+                width:40,
+                height:40,
+                borderRadius:30,
+            }}
+            source={require("./assets/prof1.jpg")}
+          />
+          </View>
+        ),
+        headerShadowVisible: false,
+        headerStyle: {
+          elevation: 0, // Remove elevation effect
+          
+          
+        },
+      
+      }}
+       
+       >
+    
         <Stack.Screen
           name="Panel Selection"
           component={PanelSelection}
           options={{ title: 'Welcome to SMS' }}
         />
 
-        <Stack.Screen name="Admin Panel" component={AdminPanel} />
+        <Stack.Screen 
+        name="Admin Panel" 
+        component={AdminPanel}
+        
+       
+        />
         <Stack.Screen name="Teacher Panel" component={TeacherPanel} />
         <Stack.Screen name="Student Panel" component={StudentPanel} />
 
       </Stack.Navigator>
+    
+    
+       
+    
     </NavigationContainer>
   );
 };

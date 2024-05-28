@@ -9,6 +9,13 @@ import GlobalStyleSheet from '../GlobalStyleSheet';
 import AdminPanel from './screens/admin/AdminPanel';
 import TeacherPanel from './screens/teacher/TeacherPanel';
 import StudentPanel from './screens/student/StudentPanel';
+import TeacherDashboard from './screens/teacher/TeacherDashboard';
+import MarkManagement from './screens/teacher/MarkManagement';
+import StudentDashboard from './screens/student/StudentDashboard';
+import StudentManageMarks from './screens/student/StudentManageMarks';
+import StudentManageFees from './screens/student/StudentManageFees';
+import StudentManageTimeTable from './screens/student/StudentManageTimeTable';
+import StudentManageSyllabus from './screens/student/StudentManageSyllabus';
 
 const Stack = createNativeStackNavigator();
 
@@ -101,8 +108,17 @@ const App = () => {
        
         />
         <Stack.Screen name="Teacher Panel" component={TeacherPanel} />
+
+        <Stack.Screen name="Teacher Dashboard" component={TeacherDashboard} />
+        <Stack.Screen name="Mark Management" component={MarkManagement} /> 
         <Stack.Screen name="Student Panel" component={StudentPanel} />
 
+        <Stack.Screen name="Student Dashboard" component={StudentDashboard} />
+        <Stack.Screen name="Student Manage Marks" component={StudentManageMarks} />
+        <Stack.Screen name="Student Manage Fees" component={StudentManageFees} />
+        <Stack.Screen name="Student Manage TimeTable" component={StudentManageTimeTable} />
+        <Stack.Screen name="Student Manage Syllabus" component={StudentManageSyllabus} />
+        
       </Stack.Navigator>
     
     

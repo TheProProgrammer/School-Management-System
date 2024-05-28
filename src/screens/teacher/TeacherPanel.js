@@ -1,6 +1,44 @@
 import GlobalStyleSheet from '../../../GlobalStyleSheet';
 
-const TeacherPanel = ({navigation}) => {
+import React, { useState } from 'react';
+import { View, StyleSheet } from 'react-native';
+import { TextInput, Button, Title } from 'react-native-paper';
+ 
 
-}
-export default TeacherPanel
+const TeacherPanel = ({ navigation }) => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+   
+
+  return (
+    <View style={GlobalStyleSheet.container}>
+      <Title>Teacher Login</Title>
+      <TextInput
+      
+        label="Email"
+        value={email}
+        onChangeText={setEmail}
+        style={GlobalStyleSheet.myInput}
+      />
+      <TextInput
+
+        label="Password"
+        value={password}
+        onChangeText={setPassword}
+        secureTextEntry
+        style={GlobalStyleSheet.myInput}
+      />
+      <Button
+        mode='elevated'
+         
+        textColor='white'
+        onPress={() => navigation.navigate('TeacherDashboard')} 
+        style={GlobalStyleSheet.myButton}>
+          Login 
+      </Button>
+    </View>
+  );
+};
+
+export default TeacherPanel;

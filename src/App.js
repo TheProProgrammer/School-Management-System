@@ -16,6 +16,7 @@ import StudentManageMarks from './screens/student/StudentManageMarks';
 import StudentManageFees from './screens/student/StudentManageFees';
 import StudentManageTimeTable from './screens/student/StudentManageTimeTable';
 import StudentManageSyllabus from './screens/student/StudentManageSyllabus';
+import CreateStudent from './screens/admin/createStudent';
 
 const Stack = createNativeStackNavigator();
 
@@ -107,6 +108,7 @@ const App = () => {
         
        
         />
+
         <Stack.Screen name="Teacher Panel" component={TeacherPanel} />
 
         <Stack.Screen name="Teacher Dashboard" component={TeacherDashboard} />
@@ -118,6 +120,9 @@ const App = () => {
         <Stack.Screen name="Student Manage Fees" component={StudentManageFees} />
         <Stack.Screen name="Student Manage TimeTable" component={StudentManageTimeTable} />
         <Stack.Screen name="Student Manage Syllabus" component={StudentManageSyllabus} />
+        
+        {/* Admin Panel */}
+        <Stack.Screen name="Create Student" component={CreateStudent} />
         
       </Stack.Navigator>
     

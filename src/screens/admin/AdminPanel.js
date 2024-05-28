@@ -1,7 +1,7 @@
 import GlobalStyleSheet from '../../../GlobalStyleSheet';
 
 
-import {Text,View,Image,StyleSheet, ScrollView} from "react-native";
+import {Text,View,Image,StyleSheet, ScrollView,Button} from "react-native";
 
 import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
 
   },
   text1:{
-    width:"90%",
+    width:"100%",
     // padding:20,
 
     color:"black",
@@ -48,16 +48,17 @@ const styles = StyleSheet.create({
 
   },
   card:{
-        padding:10,
-        width:"100%",
-        backgroundColor:"white"
+        padding:20,
+        // width:"100%",
+        height:"70%",
+        backgroundColor:"red",
+        margin:10
   },
   categories:{
-    Flex:1,
-    justifyContent:"center",
-    alignItems:"center",
+    // Flex:1,
+
     width:"100%",
-    backgroundColor:"red",
+    backgroundColor:"orange",
     padding:10,
   }
 
@@ -89,13 +90,29 @@ const AdminPanel = ({navigation}) => {
             <>
 
                 <Text style={styles.text}>Categories</Text>
-                <ScrollView style = {styles.categories}
-                    horizontal={true}
-                >
-                    <View style={styles.card}>
+                <View style={{
+                  width:"100%",
+
+                }}>
+                {/* <ScrollView style = {styles.categories}
+                      horizontal={true}
+                  >
+                      <View style={styles.card}>
+                          <Image style ={{
+                              width:"100%",
+                              height:"50%"
+
+                          }}
+                          source={require("../../assets/prof1.jpg")}
+                          />
+                          <Text style={styles.text1}>Add Teacher</Text>
+                      </View>  
+
+
+                      <View style={styles.card}>
                         <Image style ={{
-                            width:"90%",
-                            height:"60%"
+                            width:"100%",
+                            height:"50%"
 
                         }}
                         source={require("../../assets/prof1.jpg")}
@@ -104,7 +121,69 @@ const AdminPanel = ({navigation}) => {
                     </View>  
 
 
-                </ScrollView>
+
+                  </ScrollView> */}
+
+                  <ScrollView horizontal={true}>
+
+
+
+                    <View style={styles.card} >
+                        <Image style ={{
+                            width:"100%",
+                            height:"50%"
+
+                        }}
+                        source={require("../../assets/prof1.jpg")}
+                        />
+                        <Text style={styles.text1}>Add Teacher</Text>
+                        <Button
+                        title="Go back to Home"
+                        onPress={() => navigation.navigate('Create Student')}
+                      />
+                    </View>  
+
+
+                    <View style={styles.card}>
+                        <Image style ={{
+                            width:"100%",
+                            height:"50%"
+
+                        }}
+                        source={require("../../assets/prof1.jpg")}
+                        />
+                        <Text style={styles.text1}>Add Teacher</Text>
+                    </View>  
+
+
+                    <View style={styles.card}>
+                        <Image style ={{
+                            width:"100%",
+                            height:"50%"
+
+                        }}
+                        source={require("../../assets/prof1.jpg")}
+                        />
+                        <Text style={styles.text1}>Add Teacher</Text>
+                    </View>  
+
+
+                    <View style={styles.card}>
+                        <Image style ={{
+                            width:"100%",
+                            height:"50%"
+
+                        }}
+                        source={require("../../assets/prof1.jpg")}
+                        />
+                        <Text style={styles.text1}>Add Teacher</Text>
+                    </View>  
+
+
+                    
+                  </ScrollView>
+                </View>
+                
             </>
         )
     }

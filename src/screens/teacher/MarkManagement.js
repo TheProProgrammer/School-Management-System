@@ -1,22 +1,38 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { View, StyleSheet, FlatList, TextInput } from 'react-native';
 import { Button, Title, Text, Menu, Provider, Divider } from 'react-native-paper';
+import firestore from '@react-native-firebase/firestore';
 import styles from '../../../GlobalStyleSheet';
-const MarkManagement = ({ navigation }) => {
+const MarkManagement = ({ navigation ,route}) => {
+  const  data  = route.params.data;
   const [term, setTerm] = useState('First');
   const [menuVisible, setMenuVisible] = useState(false);
-  const [students, setStudents] = useState([
-    { id: '1', name: 'Student 1', firstTermMarks: '', midTermMarks: '', finalTermMarks: '' },
-    { id: '2', name: 'Student 2', firstTermMarks: '', midTermMarks: '', finalTermMarks: '' },
-    { id: '2', name: 'Student 2', firstTermMarks: '', midTermMarks: '', finalTermMarks: '' },
-    { id: '2', name: 'Student 2', firstTermMarks: '', midTermMarks: '', finalTermMarks: '' },
-    { id: '2', name: 'Student 2', firstTermMarks: '', midTermMarks: '', finalTermMarks: '' },
-    { id: '2', name: 'Student 2', firstTermMarks: '', midTermMarks: '', finalTermMarks: '' },
-    { id: '2', name: 'Student 2', firstTermMarks: '', midTermMarks: '', finalTermMarks: '' },
-    { id: '2', name: 'Student 2', firstTermMarks: '', midTermMarks: '', finalTermMarks: '' },
-    { id: '2', name: 'Student 2', firstTermMarks: '', midTermMarks: '', finalTermMarks: '' },
-    // Add more student data here
-  ]);
+  const [subj,setSubj] = useState('English');
+  const [students, setStudents] = useState([]);
+  const [classId, setClassId] = useState('');
+
+  useEffect(() => {
+    const fetchStudents = async () => {
+      try {
+        // Fetch the class assigned to the teacher
+        const studSnapshot = await firestore()
+          .collection('Students')
+          .where('Class', '==', data.classAssigned)
+          .get();
+
+        if (!studSnapshot.empty) {
+           
+          const studentsData = studSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+          setStudents(studentsData);
+           
+        }
+      } catch (error) {
+        console.error('Error fetching students: ', error);
+      }
+    };
+
+    fetchStudents();
+  }, [data]);
   
 
   const handleMarkChange = (id, marks) => {
@@ -36,7 +52,7 @@ const MarkManagement = ({ navigation }) => {
 
   const renderStudent = ({ item }) => (
     <View style={styles.studentRow}>
-      <Text style={styles.studentName}>{item.name}</Text>
+      <Text style={styles.studentName}>{item.Name}</Text>
       <TextInput
         style={styles.marksInput}
         value={term === 'First' ? item.firstTermMarks : term === 'Mid' ? item.midTermMarks : item.finalTermMarks}
@@ -71,7 +87,7 @@ const MarkManagement = ({ navigation }) => {
         <FlatList
           data={students}
           renderItem={renderStudent}
-          keyExtractor={item => item.id}
+          keyExtractor={item => item.RegNo}
           style={styles.studentList}
         />
 <View style={styles.buttonColumn}> 

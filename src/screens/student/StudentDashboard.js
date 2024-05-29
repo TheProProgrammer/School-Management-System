@@ -3,10 +3,12 @@ import GlobalStyleSheet from '../../../GlobalStyleSheet';
 import { View, StyleSheet,Image  } from 'react-native';
 import { Button, Title } from 'react-native-paper';
 
-const StudentDashboard = ({ navigation }) => {
+const StudentDashboard = ({ navigation, route }) => {
+  const data = route.params.data
   return (
     <View style={GlobalStyleSheet.container}>
-      <Title>Student Dashboard</Title>
+      <Title>Hi, {data.Name}</Title>
+      <Title>Welcome to Dashboard</Title>
       <Button
       mode='elevated'
       buttonColor='#875FF6'

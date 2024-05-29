@@ -11,7 +11,7 @@ const TeacherDashboard = ({ navigation }) => {
       <Button
          mode='elevated'
          textColor='white'
-        onPress={() => navigation.navigate('MarkManagement')}
+        onPress={() => navigation.navigate('Mark Management')}
         style={styles.myButton}
       >
         Manage Marks

@@ -33,7 +33,7 @@ const TeacherPanel = ({ navigation }) => {
         mode='elevated'
          
         textColor='white'
-        onPress={() => navigation.navigate('TeacherDashboard')} 
+        onPress={() => navigation.navigate('Teacher Dashboard')} 
         style={GlobalStyleSheet.myButton}>
           Login 
       </Button>

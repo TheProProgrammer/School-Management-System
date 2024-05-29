@@ -52,16 +52,16 @@ const App = () => {
       
         headerShown: true,
         headerTitle:"",
-        headerLeft: () => (
-          <Image
-            style={{
-                width:30,
-                height:30,
+        // headerLeft: () => (
+        //   <Image
+        //     style={{
+        //         width:30,
+        //         height:30,
                 
-            }}
-            source={require("./assets/menu.png")}
-          />
-        ),
+        //     }}
+        //     source={require("./assets/menu.png")}
+        //   />
+        // ),
         headerRight: () => (
           <View
             style={{

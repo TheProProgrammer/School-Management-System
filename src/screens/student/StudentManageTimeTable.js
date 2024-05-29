@@ -3,14 +3,16 @@ import { View, Image, ActivityIndicator, StyleSheet } from 'react-native';
 import { Title, Text } from 'react-native-paper';
 import storage from '@react-native-firebase/storage';
 
-const StudentManageTimeTable = ({ navigation }) => {
+const StudentManageTimeTable = ({ navigation, route}) => {
   const [imageUrl, setImageUrl] = useState(null);
   const [loading, setLoading] = useState(true);
+
+  const stdClass = route.params.class
 
   useEffect(() => {
     const fetchImage = async () => {
       try {
-        const reference = storage().ref('2.png'); // Ensure correct storage reference
+        const reference = storage().ref(stdClass+'.png'); // Ensure correct storage reference
         const url = await reference.getDownloadURL();
         setImageUrl(url);
       } catch (error) {

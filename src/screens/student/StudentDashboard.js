@@ -31,7 +31,7 @@ const StudentDashboard = ({ navigation, route }) => {
       mode='elevated'
       buttonColor='#875FF6'
       textColor='white'
-      onPress={() => navigation.navigate('Student Manage TimeTable')} 
+      onPress={() => navigation.navigate('Student Manage TimeTable', {class: data.Class})} 
       style={GlobalStyleSheet.myButton}
       >
         Manage TimeTable

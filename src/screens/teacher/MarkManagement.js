@@ -17,6 +17,7 @@ const MarkManagement = ({ navigation }) => {
     { id: '2', name: 'Student 2', firstTermMarks: '', midTermMarks: '', finalTermMarks: '' },
     // Add more student data here
   ]);
+  
 
   const handleMarkChange = (id, marks) => {
     setStudents(students.map(student => {

@@ -27,7 +27,7 @@ const StudentManageTimeTable = ({ navigation, route}) => {
 
   return (
     <View style={styles.container}>
-      <Title>Manage Timetable</Title>
+      <Title>Timetable</Title>
       {loading ? (
         <ActivityIndicator size="large" color="#0000ff" />
       ) : imageUrl ? (
@@ -51,8 +51,8 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   image: {
-    width: 200,
-    height: 200,
+    width: 350,
+    height: 350,
   },
 });
 

@@ -37,7 +37,7 @@ const StudentManageTimeTable = ({ navigation, route}) => {
           resizeMode="contain"
         />
       ) : (
-        <Text>No file named 2.png found</Text>
+        <Text>No file found{stdClass}</Text>
       )}
     </View>
   );

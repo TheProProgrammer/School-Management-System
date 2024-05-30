@@ -14,7 +14,7 @@ const StudentPanel = ({ navigation }) => {
             // Retrieve the student document based on the entered email
             const studentSnapshot = await firestore()
                 .collection('Students')
-                .where('email', '==', email)
+                .where('Email', '==', email)
                 .get();
 
             // Check if the document exists
@@ -26,7 +26,7 @@ const StudentPanel = ({ navigation }) => {
             const studentData = studentSnapshot.docs[0].data();
 
             // Check if the entered password matches the stored password
-            if (studentData.password !== password) {
+            if (studentData.Password !== password) {
                 throw new Error('Incorrect password');
             }
 

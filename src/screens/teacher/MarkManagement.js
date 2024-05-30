@@ -3,8 +3,12 @@ import { View, StyleSheet, FlatList, TextInput } from 'react-native';
 import { Button, Title, Text, Menu, Provider, Divider } from 'react-native-paper';
 import firestore from '@react-native-firebase/firestore';
 import styles from '../../../GlobalStyleSheet';
+
+
 const MarkManagement = ({ navigation ,route}) => {
+
   const  data  = route.params.data;
+
   const [term, setTerm] = useState('First');
   const [menuVisible, setMenuVisible] = useState(false);
   const [subjectsMenuVisible, setSubjectsMenuVisible] = useState(false);
@@ -15,6 +19,7 @@ const MarkManagement = ({ navigation ,route}) => {
   const [classId, setClassId] = useState('');
   const [snackbarMessage, setSnackbarMessage] = useState('');
   const [snackbarVisible, setSnackbarVisible] = useState(false);
+  const [marks, setMarks] = useState({});
   useEffect(() => {
     const subjectsByClass = {
       'Nursery': ['English', 'Urdu', 'Math', 'Nazra-e-Quran'],
@@ -32,6 +37,7 @@ const MarkManagement = ({ navigation ,route}) => {
     setSubjects(subjectsByClass[data.classAssigned] || []);
   }, [data.classAssigned]);
    
+
   useEffect(() => {
     const fetchStudents = async () => {
       try { 
@@ -56,6 +62,7 @@ const MarkManagement = ({ navigation ,route}) => {
   }, [data]);
   
 
+
   const handleMarkChange = (id, marks) => {
     setStudents(students.map(student => {
       if (student.id === id) {
@@ -71,6 +78,33 @@ const MarkManagement = ({ navigation ,route}) => {
     }));
   };
    
+
+  const handleSearch = async (student) => {
+    try {
+      const marksSnapshot = await firestore()
+        .collection('Marks')
+        .where('studentId', '==', student.id)
+        .where('subject', '==', selectedSubject)
+        .where('term', '==', term)
+        .get();
+
+      if (!marksSnapshot.empty) {
+        const marksDoc = marksSnapshot.docs[0];
+        const fetchedMarks = marksDoc.data().marks;
+        setMarks((prevMarks) => ({ ...prevMarks, [student.id]: fetchedMarks }));
+        setSnackbarMessage('Marks fetched successfully!');
+        setSnackbarVisible(true);
+      } else {
+        setSnackbarMessage('No marks record found.');
+        setSnackbarVisible(true);
+      }
+    } catch (error) {
+      console.error('Error fetching marks: ', error);
+      setSnackbarMessage('Failed to fetch marks.');
+      setSnackbarVisible(true);
+    }
+  };
+
 
   const handleInsert = async (student) => {
     try {
@@ -89,6 +123,8 @@ const MarkManagement = ({ navigation ,route}) => {
       setSnackbarVisible(true);
     }
   };
+
+
 
   const handleUpdate = async (student) => {
     try {
@@ -117,6 +153,8 @@ const MarkManagement = ({ navigation ,route}) => {
     }
   };
 
+
+
   const handleDelete = async (student) => {
     try {
       const marksSnapshot = await firestore()
@@ -142,11 +180,14 @@ const MarkManagement = ({ navigation ,route}) => {
     }
   };
 
+
+
   const renderStudent = ({ item }) => (
+
     <View style={styles.buttonColumn}>
     <View style={styles.studentRow}>
       <Text style={styles.studentName}>{item.Name}</Text>
-      <Text> </Text>
+      <Text style={styles.studentName}>{marks[item.id]}</Text>
       <TextInput
         style={styles.marksInput}
         value={
@@ -173,12 +214,16 @@ const MarkManagement = ({ navigation ,route}) => {
           <Button textColor="white" mode="contained" style={styles.button} onPress={() => handleDelete(item)}>
             Delete
           </Button>
+          <Button textColor="white" mode="contained" style={styles.button} onPress={() => handleSearch(item)}>
+            Search
+          </Button>
         </View>
     </View>
   </View>
  
   );
 
+ 
   return (
     <Provider>
       <View style={styles.container}>

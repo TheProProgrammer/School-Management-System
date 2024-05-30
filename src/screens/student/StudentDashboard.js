@@ -31,7 +31,7 @@ const StudentDashboard = ({ navigation, route }) => {
       mode='elevated'
       buttonColor='#875FF6'
       textColor='white'
-      onPress={() => navigation.navigate('Student Manage TimeTable', {class: data.AdmissionClass})} 
+      onPress={() => navigation.navigate('Student Manage TimeTable')} 
       style={GlobalStyleSheet.myButton}
       >
         Manage TimeTable
@@ -40,7 +40,7 @@ const StudentDashboard = ({ navigation, route }) => {
       mode='elevated'
       buttonColor='#875FF6'
       textColor='white'
-      onPress={() => navigation.navigate('Student Manage Syllabus')} 
+      onPress={() => navigation.navigate('Student Manage Syllabus', {class: data.AdmissionClass})} 
       style={GlobalStyleSheet.myButton}
       >
         Manage Syllabus

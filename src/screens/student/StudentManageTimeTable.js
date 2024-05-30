@@ -7,12 +7,10 @@ const StudentManageTimeTable = ({ navigation, route}) => {
   const [imageUrl, setImageUrl] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  const stdClass = route.params.class
-
   useEffect(() => {
     const fetchImage = async () => {
       try {
-        const reference = storage().ref(stdClass+'.png'); // Ensure correct storage reference
+        const reference = storage().ref("timetable.png"); // Ensure correct storage reference
         const url = await reference.getDownloadURL();
         setImageUrl(url);
       } catch (error) {
@@ -37,7 +35,7 @@ const StudentManageTimeTable = ({ navigation, route}) => {
           resizeMode="contain"
         />
       ) : (
-        <Text>No file found{stdClass}</Text>
+        <Text>No time table file found</Text>
       )}
     </View>
   );

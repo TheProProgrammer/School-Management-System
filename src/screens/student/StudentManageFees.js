@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, ScrollView } from 'react-native';
 import { Title, Text, Button } from 'react-native-paper';
 import firestore from '@react-native-firebase/firestore';
 import GlobalStyleSheet from '../../../GlobalStyleSheet';
@@ -44,7 +44,8 @@ const StudentManageFees = ({ navigation }) => {
     }, []);
 
     return (
-        <View style={GlobalStyleSheet.container}>
+        <ScrollView>
+            <View style={GlobalStyleSheet.container}>
             <Title>Manage Fees</Title>
             {errorMessage ? (
                 <Text style={styles.errorText}>{errorMessage}</Text>
@@ -63,6 +64,7 @@ const StudentManageFees = ({ navigation }) => {
                 <Text>No fees data available.</Text>
             )}
         </View>
+        </ScrollView>
     );
 };
 

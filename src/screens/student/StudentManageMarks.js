@@ -1,15 +1,79 @@
+import React, { useState, useEffect } from 'react';
+import { View, StyleSheet } from 'react-native';
+import { Title, Text } from 'react-native-paper';
+import firestore from '@react-native-firebase/firestore';
 import GlobalStyleSheet from '../../../GlobalStyleSheet';
 
-import React, { useState } from 'react';
-import { View } from 'react-native';
-import { Title, TextInput, Button } from 'react-native-paper';
+const StudentManageMarks = ({ navigation }) => {
+    const [marks, setMarks] = useState(null);
+    const [errorMessage, setErrorMessage] = useState('');
 
-const StudentManageMarks = ({navigation}) => {
+    // Hardcoded student name
+    const studentName = 'Abdullah Asim';
 
-    return(
+    useEffect(() => {
+        const fetchMarks = async () => {
+            try {
+                // Clear previous marks and errors
+                setMarks(null);
+                setErrorMessage('');
+
+                // Query Firestore for the marks document with the given student's name
+                const marksSnapshot = await firestore()
+                    .collection('Marks')
+                    .where('Name', '==', studentName)
+                    .get();
+
+                if (marksSnapshot.empty) {
+                    throw new Error('No marks found for this student');
+                }
+
+                // Extract the data from the document
+                const marksData = marksSnapshot.docs.map(doc => doc.data());
+
+                // Set the marks data to state
+                setMarks(marksData);
+            } catch (error) {
+                setErrorMessage(error.message);
+            }
+        };
+
+        fetchMarks();
+    }, []);
+
+    return (
         <View style={GlobalStyleSheet.container}>
-            <Title>Manage Marks</Title>
+            <Title>Marks</Title>
+            {errorMessage ? (
+                <Text style={styles.errorText}>{errorMessage}</Text>
+            ) : null}
+            {marks && marks.length > 0 ? (
+                marks.map((mark, index) => (
+                    <View key={index} style={styles.markContainer}>
+                        <Text style={{fontWeight: "bold"}}>Subject: {mark.subject}</Text>
+                        <Text>Class: {mark.class}</Text>
+                        <Text>First Term: {mark.first}</Text>
+                        <Text>Mid Term: {mark.mids}</Text>
+                        <Text>Final Term: {mark.finals}</Text>
+                    </View>
+                ))
+            ) : null}
         </View>
     );
-}
+};
+
+const styles = StyleSheet.create({
+    errorText: {
+        color: 'red',
+        marginTop: 10,
+    },
+    markContainer: {
+        marginTop: 20,
+        padding: 10,
+        borderWidth: 1,
+        borderColor: '#ccc',
+        borderRadius: 5,
+    },
+});
+
 export default StudentManageMarks;

@@ -4,6 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import {Image,View,Text,Alert,StyleSheet} from "react-native"
+import { firebase } from '@react-native-firebase/app';
 import GlobalStyleSheet from '../GlobalStyleSheet';
 
 import AdminPanel from './screens/admin/AssignClass';
@@ -48,9 +49,15 @@ const CustomHeader = (props)=>{
   </>
 }
 const App = () => {
+  
+  if (!firebase.apps.length) {
+    firebase.initializeApp({
+      // Your Firebase project configuration
+    });
+  }
+  
   return (
-
-
+    
     <NavigationContainer>
     
     

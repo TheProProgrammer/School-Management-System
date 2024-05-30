@@ -10,6 +10,7 @@ import com.facebook.react.defaults.DefaultNewArchitectureEntryPoint.load
 import com.facebook.react.defaults.DefaultReactHost.getDefaultReactHost
 import com.facebook.react.defaults.DefaultReactNativeHost
 import com.facebook.soloader.SoLoader
+import io.invertase.firebase.storage.ReactNativeFirebaseStoragePackage;
 
 class MainApplication : Application(), ReactApplication {
 
@@ -40,4 +41,5 @@ class MainApplication : Application(), ReactApplication {
       load()
     }
   }
+  
 }

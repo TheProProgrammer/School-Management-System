@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, ScrollView } from 'react-native';
 import { Title, Text } from 'react-native-paper';
 import firestore from '@react-native-firebase/firestore';
 import GlobalStyleSheet from '../../../GlobalStyleSheet';
@@ -42,7 +42,8 @@ const StudentManageMarks = ({ navigation, route}) => {
     }, []);
 
     return (
-        <View style={GlobalStyleSheet.container}>
+        <ScrollView>
+            <View style={GlobalStyleSheet.container}>
             <Title>Marks</Title>
             {errorMessage ? (
                 <Text style={styles.errorText}>{errorMessage}</Text>
@@ -59,6 +60,7 @@ const StudentManageMarks = ({ navigation, route}) => {
                 ))
             ) : null}
         </View>
+        </ScrollView>
     );
 };
 

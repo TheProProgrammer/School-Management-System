@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, ScrollView } from 'react-native';
 import { Title, Text } from 'react-native-paper';
 import firestore from '@react-native-firebase/firestore';
 import GlobalStyleSheet from '../../../GlobalStyleSheet';
 
-const StudentManageMarks = ({ navigation }) => {
+const StudentManageMarks = ({ navigation, route}) => {
     const [marks, setMarks] = useState(null);
     const [errorMessage, setErrorMessage] = useState('');
 
     // Hardcoded student name
-    const studentName = 'Abdullah Asim';
+    const studentName = route.params.id;
 
     useEffect(() => {
         const fetchMarks = async () => {
@@ -21,7 +21,7 @@ const StudentManageMarks = ({ navigation }) => {
                 // Query Firestore for the marks document with the given student's name
                 const marksSnapshot = await firestore()
                     .collection('Marks')
-                    .where('Name', '==', studentName)
+                    .where('studentId', '==', studentName)
                     .get();
 
                 if (marksSnapshot.empty) {
@@ -42,7 +42,8 @@ const StudentManageMarks = ({ navigation }) => {
     }, []);
 
     return (
-        <View style={GlobalStyleSheet.container}>
+        <ScrollView>
+            <View style={GlobalStyleSheet.container}>
             <Title>Marks</Title>
             {errorMessage ? (
                 <Text style={styles.errorText}>{errorMessage}</Text>
@@ -52,13 +53,14 @@ const StudentManageMarks = ({ navigation }) => {
                     <View key={index} style={styles.markContainer}>
                         <Text style={{fontWeight: "bold"}}>Subject: {mark.subject}</Text>
                         <Text>Class: {mark.class}</Text>
-                        <Text>First Term: {mark.first}</Text>
-                        <Text>Mid Term: {mark.mids}</Text>
-                        <Text>Final Term: {mark.finals}</Text>
+                        <Text>Term: {mark.term}</Text>
+                        <Text>Subject: {mark.subject}</Text>
+                        <Text>Marks: {mark.marks}</Text>
                     </View>
                 ))
             ) : null}
         </View>
+        </ScrollView>
     );
 };
 

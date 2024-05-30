@@ -53,13 +53,14 @@ const GlobalStyleSheet = StyleSheet.create(
         textAlign: 'center',
       },
       buttonRow: {
-        flexDirection: 'row',
+         
         justifyContent: 'space-between',
         marginVertical:5,
       },
       buttonColumn:{
     justifyContent:'space-between',
     padding:5,
+    flexDirection:'column',
     
       },
       button: {

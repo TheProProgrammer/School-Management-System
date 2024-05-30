@@ -24,14 +24,13 @@ const StudentPanel = ({ navigation }) => {
 
             // Get the first document from the snapshot
             const studentData = studentSnapshot.docs[0].data();
-
             // Check if the entered password matches the stored password
             if (studentData.Password !== password) {
                 throw new Error('Incorrect password');
             }
 
             // If login successful, navigate to the student dashboard
-            navigation.navigate('Student Dashboard', {data: studentData});
+            navigation.navigate('Student Dashboard', {data: studentData, id: studentSnapshot.docs[0].id});
         } catch (error) {
             // If there's an error, display error message
             setErrorMessage(error.message);

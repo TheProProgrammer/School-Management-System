@@ -43,18 +43,28 @@ const styles = StyleSheet.create({
     Flex:1,
     flexDirection:"row",
     justifyContent:"space-evenly",
-    alignItems:"center"
+    alignItems:"center",
     // margin:10
+    elevation: 5, // For Android
+    shadowColor: '#000', // For iOS
+    shadowOffset: { width: 10, height: 2 }, // For iOS
+    shadowOpacity: 0.15, // For iOS
+    shadowRadius: 3.84, // For iOS
 
   },
   card:{
         padding:20,
         // width:"100%",
         height:"70%",
-        backgroundColor:"pink",
+        backgroundColor:"white",
         borderColor:"#5f57D3",
         borderRadius:10,
-        margin:10
+        margin:10,
+    elevation: 5, // For Android
+    shadowColor: '#000', // For iOS
+    shadowOffset: { width: 0, height: 2 }, // For iOS
+    shadowOpacity: 0.25, // For iOS
+    shadowRadius: 3.84, // For iOS
   },
   categories:{
     // Flex:1,
@@ -80,8 +90,8 @@ const AdminPanel = ({navigation}) => {
             <>
 
                 <View style={[styles.banner]}>
-                    
-                    <Image style ={{width:"40%",height:"78%",marginLeft:"50%",marginBottom:150,borderRadius:10}} source={require("../../assets/prof1.jpg")} />
+                    <Text style={{marginTop:80,marginLeft:10,fontSize:20,color:"white",fontWeight:"bold"}}>Contact: 0347 74774 7774</Text>
+                    <Image style ={{width:"40%",height:"78%",marginLeft:"-20%",marginBottom:150,borderRadius:10}} source={require("../../assets/prof1.jpg")} />
                 </View>
             </>
         )
@@ -188,11 +198,88 @@ const AdminPanel = ({navigation}) => {
                         />
                         <Text style={styles.text1}></Text>
                         <Button
+                        title="     Assign Class  "
+                        onPress={() => navigation.navigate('AssignClass')}
+                      />
+                    </View>  
+
+                    <View style={styles.card}>
+                        <Image style ={{
+                            width:"100%",
+                            height:"50%"
+
+                        }}
+                        source={require("../../assets/prof1.jpg")}
+                        />
+                        <Text style={styles.text1}></Text>
+                        <Button
+                        title="     Timetable     "
+                        onPress={() => navigation.navigate('timetable')}
+                      />
+                    </View>  
+
+                    <View style={styles.card}>
+                        <Image style ={{
+                            width:"100%",
+                            height:"50%"
+
+                        }}
+                        source={require("../../assets/prof1.jpg")}
+                        />
+                        <Text style={styles.text1}></Text>
+                        <Button
+                        title="    Syllabus    "
+                        onPress={() => navigation.navigate('syllabus')}
+                      />
+                    </View>  
+
+
+                    <View style={styles.card}>
+                        <Image style ={{
+                            width:"100%",
+                            height:"50%"
+
+                        }}
+                        source={require("../../assets/prof1.jpg")}
+                        />
+                        <Text style={styles.text1}></Text>
+                        <Button
+                        title="    Age Record     "
+                        onPress={() => navigation.navigate('AgeRecord')}
+                      />
+                    </View>  
+
+
+                    <View style={styles.card}>
+                        <Image style ={{
+                            width:"100%",
+                            height:"50%"
+
+                        }}
+                        source={require("../../assets/prof1.jpg")}
+                        />
+                        <Text style={styles.text1}></Text>
+                        <Button
+                        title="    ResultRecord   "
+                        onPress={() => navigation.navigate('ResultRecord')}
+                      />
+                    </View>  
+
+
+                    <View style={styles.card}>
+                        <Image style ={{
+                            width:"100%",
+                            height:"50%"
+
+                        }}
+                        source={require("../../assets/prof1.jpg")}
+                        />
+                        <Text style={styles.text1}></Text>
+                        <Button
                         title="     View Fees     "
                         onPress={() => navigation.navigate('View Fees')}
                       />
                     </View>  
-
 
                     
                   </ScrollView>

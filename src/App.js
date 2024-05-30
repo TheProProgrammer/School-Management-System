@@ -7,7 +7,9 @@ import {Image,View,Text,Alert,StyleSheet} from "react-native"
 import { firebase } from '@react-native-firebase/app';
 import GlobalStyleSheet from '../GlobalStyleSheet';
 
-import AdminPanel from './screens/admin/ResultReport';
+import AdminPanel from './screens/admin/AdminPanel';
+import login from './screens/admin/login';
+
 import TeacherPanel from './screens/teacher/TeacherPanel';
 import StudentPanel from './screens/student/StudentPanel';
 import TeacherDashboard from './screens/teacher/TeacherDashboard';
@@ -24,6 +26,14 @@ import EditStudent from './screens/admin/EditStudent';
 import CreateFees from './screens/admin/AddFees';
 import ViewFees from './screens/admin/ViewFees';
 import EditFees from './screens/admin/EditFees';
+
+import timetable from './screens/admin/timetable';
+import syllabus from './screens/admin/syllabus';
+import AssignClass from './screens/admin/AssignClass';
+import AgeRecord from './screens/admin/AgeRecord';
+
+import ResultReport from './screens/admin/ResultReport';
+
 // import ViewStudent from './screens/admin/ViewStudent';
 
 
@@ -57,7 +67,7 @@ const App = () => {
   }
   
   return (
-    
+   
     <NavigationContainer>
     
     
@@ -123,6 +133,7 @@ const App = () => {
         
        
         />
+      <Stack.Screen name="login" component={login} />
 
         <Stack.Screen name="Teacher Panel" component={TeacherPanel} />
 
@@ -144,14 +155,22 @@ const App = () => {
         <Stack.Screen name="Add Fees" component={CreateFees} />
         <Stack.Screen name="View Fees" component={ViewFees} />
         <Stack.Screen name="Edit Fees" component={EditFees} />
-        
+
+        <Stack.Screen name="timetable" component={timetable} />
+        <Stack.Screen name="syllabus" component={syllabus} />
+        <Stack.Screen name="AgeRecord" component={AgeRecord} />
+        <Stack.Screen name="ResultReport" component={ResultReport} />
+  
+        <Stack.Screen name="AssignClass" component={AssignClass} />
       </Stack.Navigator>
     
     
        
     
     </NavigationContainer>
+
   );
+
 };
 
 const PanelSelection = ({navigation}) => {
@@ -160,7 +179,7 @@ const PanelSelection = ({navigation}) => {
     <SafeAreaView style = {GlobalStyleSheet.background}>
 
       <PanelSelectionButton text="Go to Student Panel" panel="Student Panel" navigation={navigation}/>
-      <PanelSelectionButton text="Go to Admin Panel" panel="Admin Panel" navigation={navigation}/>
+      <PanelSelectionButton text="Go to Admin Panel" panel="login" navigation={navigation}/>
       <PanelSelectionButton text="Go to Teacher Panel" panel="Teacher Panel" navigation={navigation}/>
 
     </SafeAreaView>

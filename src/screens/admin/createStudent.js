@@ -1,15 +1,16 @@
 import GlobalStyleSheet from '../../../GlobalStyleSheet';
 // import "react" from "react";
 
-import {Text,View,Image,StyleSheet, ScrollView,Alert,Button} from "react-native";
+import {View,Image,StyleSheet, ScrollView,Alert} from "react-native";
 
 import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import AdminPanel from './AdminPanel';
 import firestore from '@react-native-firebase/firestore';
 import { useState } from 'react';
-import { TextInput } from 'react-native-paper';
+// import {  } from 'react-native-paper';
 import DateTimePicker from '@react-native-community/datetimepicker';
+import { TextInput, Button,Text } from 'react-native-paper';
 
 const styles = StyleSheet.create({
 
@@ -48,12 +49,12 @@ const CreateStudent = ({navigation}) => {
       };
 
     const styles = StyleSheet.create({
-        container:{
-            marginTop:40,
-            backgroundColor:"red",
-            width:"100%",
-            height:700
-        },
+        container: {
+            flex: 1,
+            padding: 20,
+          },input: {
+            marginBottom: 20,
+          },
         input1:{
             flex:1,
             justifyContent:"center",
@@ -88,7 +89,7 @@ const CreateStudent = ({navigation}) => {
         try{
 
             const get = await firestore()
-              .collection('Student')
+              .collection('Students')
               .add({
                 RegNo: reg,
                 Name: name,
@@ -120,9 +121,9 @@ const CreateStudent = ({navigation}) => {
 
                 {/* Alert.alert(""+{userts}) */}
                 {/* <Text>{stud}</Text> */}
-                <View style={styles.container}>
-                    <Text>Add Student</Text>
-                  <ScrollView>
+                {/* <View style={styles.container}> */}
+                    {/* <Text>Add Student</Text> */}
+                  {/* <ScrollView>
                     <View style={styles.input1}>
                         <Text
                             style={{
@@ -325,9 +326,167 @@ const CreateStudent = ({navigation}) => {
                     <View style={styles.input1}>
                         <Button onPress={writeData} title="Add Student"/>
                     </View>
-                    </ScrollView>
-                </View>
+                    </ScrollView> */}
 
+{/* <ScrollView>
+        <TextInput
+        label="Name"
+        value={name}
+        onChangeText={setName}
+        style={styles.input}
+      />
+      <TextInput
+        label="Registration Number"
+        value={reg}
+        onChangeText={setReg}
+        style={styles.input}
+      />
+      <TextInput
+        label="Gender"
+        value={gender}
+        onChangeText={setGender}
+        style={styles.input}
+      />
+
+        <TextInput
+        label="Caste"
+        value={cast}
+        onChangeText={setCast}
+        style={styles.input}
+      />
+
+<TextInput
+        label="Occupation"
+        value={occup}
+        onChangeText={setOccup}
+        style={styles.input}
+      />
+
+
+<TextInput
+        label="Residence"
+        value={resid}
+        onChangeText={setResid}
+        style={styles.input}
+      />
+
+
+<TextInput
+        label="Father Name"
+        value={fName}
+        onChangeText={setFName}
+        style={styles.input}
+      />
+
+<TextInput
+        label="Admission Class"
+        value={aClass}
+        onChangeText={setAClass}
+        style={styles.input}
+      />
+
+
+<TextInput
+        label="Email"
+        value={email}
+        onChangeText={setEmail}
+        style={styles.input}
+      />
+
+<TextInput
+        label="Password"
+        value={passw}
+        onChangeText={setPassw}
+        style={styles.input}
+      />
+      <Button mode="contained" onPress={writeData} >
+        Create Student
+      </Button>
+
+      </ScrollView> */}
+                {/* </View> */}
+               
+                <View style={styles.container}>
+      <Text style={{fontWeight:20,padding:10}} variant="titleLarge">Add Student</Text>
+   
+        <ScrollView>
+        <TextInput
+        label="Name"
+        value={name}
+        onChangeText={setName}
+        style={styles.input}
+      />
+      <TextInput
+        label="Registration Number"
+        value={reg}
+        onChangeText={setReg}
+        style={styles.input}
+      />
+      <TextInput
+        label="Gender"
+        value={gender}
+        onChangeText={setGender}
+        style={styles.input}
+      />
+
+        <TextInput
+        label="Caste"
+        value={cast}
+        onChangeText={setCast}
+        style={styles.input}
+      />
+
+<TextInput
+        label="Occupation"
+        value={occup}
+        onChangeText={setOccup}
+        style={styles.input}
+      />
+
+
+<TextInput
+        label="Residence"
+        value={resid}
+        onChangeText={setResid}
+        style={styles.input}
+      />
+
+
+<TextInput
+        label="Father Name"
+        value={fName}
+        onChangeText={setFName}
+        style={styles.input}
+      />
+
+<TextInput
+        label="Admission Class"
+        value={aClass}
+        onChangeText={setAClass}
+        style={styles.input}
+      />
+
+
+<TextInput
+        label="Email"
+        value={email}
+        onChangeText={setEmail}
+        style={styles.input}
+      />
+
+<TextInput
+        label="Password"
+        value={passw}
+        onChangeText={setPassw}
+        style={styles.input}
+      />
+      <Button mode="contained" onPress={writeData} >
+        Update
+      </Button>
+
+      </ScrollView>
+
+    </View>
                 
                 
 

@@ -52,9 +52,9 @@ const StudentManageMarks = ({ navigation, route}) => {
                     <View key={index} style={styles.markContainer}>
                         <Text style={{fontWeight: "bold"}}>Subject: {mark.subject}</Text>
                         <Text>Class: {mark.class}</Text>
-                        <Text>First Term: {mark.first}</Text>
-                        <Text>Mid Term: {mark.mids}</Text>
-                        <Text>Final Term: {mark.finals}</Text>
+                        <Text>Term: {mark.term}</Text>
+                        <Text>Subject: {mark.subject}</Text>
+                        <Text>Marks: {mark.marks}</Text>
                     </View>
                 ))
             ) : null}

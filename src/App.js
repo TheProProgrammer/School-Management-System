@@ -7,7 +7,7 @@ import {Image,View,Text,Alert,StyleSheet} from "react-native"
 import { firebase } from '@react-native-firebase/app';
 import GlobalStyleSheet from '../GlobalStyleSheet';
 
-import AdminPanel from './screens/admin/AdminPanel';
+import AdminPanel from './screens/admin/AssignClass';
 import TeacherPanel from './screens/teacher/TeacherPanel';
 import StudentPanel from './screens/student/StudentPanel';
 import TeacherDashboard from './screens/teacher/TeacherDashboard';
@@ -18,6 +18,14 @@ import StudentManageFees from './screens/student/StudentManageFees';
 import StudentManageTimeTable from './screens/student/StudentManageTimeTable';
 import StudentManageSyllabus from './screens/student/StudentManageSyllabus';
 import CreateStudent from './screens/admin/createStudent';
+import ViewStudent from './screens/admin/ViewStudent';
+import EditStudent from './screens/admin/EditStudent';
+
+import CreateFees from './screens/admin/AddFees';
+import ViewFees from './screens/admin/ViewFees';
+import EditFees from './screens/admin/EditFees';
+// import ViewStudent from './screens/admin/ViewStudent';
+
 
 const Stack = createNativeStackNavigator();
 
@@ -69,29 +77,29 @@ const App = () => {
         //     source={require("./assets/menu.png")}
         //   />
         // ),
-        headerRight: () => (
-          <View
-            style={{
-              borderRadius:30,
-              borderColor:"#5D57D3",
-              borderWidth:5,
-              // padding:5,
-              shadowOpacity:0.4,
-              elevation:10
+        // headerRight: () => (
+        //   <View
+        //     style={{
+        //       borderRadius:30,
+        //       borderColor:"#5D57D3",
+        //       borderWidth:5,
+        //       // padding:5,
+        //       shadowOpacity:0.4,
+        //       elevation:10
 
 
-            }}
-          >
-          <Image
-            style={{
-                width:40,
-                height:40,
-                borderRadius:30,
-            }}
-            source={require("./assets/prof1.jpg")}
-          />
-          </View>
-        ),
+        //     }}
+        //   >
+        //   <Image
+        //     style={{
+        //         width:40,
+        //         height:40,
+        //         borderRadius:30,
+        //     }}
+        //     source={require("./assets/prof1.jpg")}
+        //   />
+        //   </View>
+        // ),
         headerShadowVisible: false,
         headerStyle: {
           elevation: 0, // Remove elevation effect
@@ -130,6 +138,12 @@ const App = () => {
         
         {/* Admin Panel */}
         <Stack.Screen name="Create Student" component={CreateStudent} />
+        <Stack.Screen name="View Student" component={ViewStudent} />
+        <Stack.Screen name="Edit Student" component={EditStudent} />
+
+        <Stack.Screen name="Add Fees" component={CreateFees} />
+        <Stack.Screen name="View Fees" component={ViewFees} />
+        <Stack.Screen name="Edit Fees" component={EditFees} />
         
       </Stack.Navigator>
     

@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
   banner:{
     width:"100%",
     height:"30%",
-    backgroundColor:"#5D57D3",
+    backgroundColor:"#5f57D3",
     borderRadius:20,
     Flex:1,
     flexDirection:"row",
@@ -51,7 +51,9 @@ const styles = StyleSheet.create({
         padding:20,
         // width:"100%",
         height:"70%",
-        backgroundColor:"red",
+        backgroundColor:"pink",
+        borderColor:"#5f57D3",
+        borderRadius:10,
         margin:10
   },
   categories:{
@@ -68,7 +70,7 @@ const AdminPanel = ({navigation}) => {
     function TextSection(){
         return (
             <>
-                <Text style={styles.text}>Hi, Akansha <Image style={{width:30,height:30}} source={require("../../assets/wave.png")}/></Text>
+                <Text style={styles.text}>Hi, Admin! <Image style={{width:30,height:30}} source={require("../../assets/wave.png")}/></Text>
             </>
         )
     }
@@ -79,7 +81,7 @@ const AdminPanel = ({navigation}) => {
 
                 <View style={[styles.banner]}>
                     
-                    <Image style ={{width:"40%",height:"78%",marginLeft:"10%",borderRadius:10}} source={require("../../assets/prof1.jpg")} />
+                    <Image style ={{width:"40%",height:"78%",marginLeft:"50%",marginBottom:150,borderRadius:10}} source={require("../../assets/prof1.jpg")} />
                 </View>
             </>
         )
@@ -136,9 +138,9 @@ const AdminPanel = ({navigation}) => {
                         }}
                         source={require("../../assets/prof1.jpg")}
                         />
-                        <Text style={styles.text1}>Add Teacher</Text>
+                        <Text style={styles.text1}></Text>
                         <Button
-                        title="Go back to Home"
+                        title="Add Student"
                         onPress={() => navigation.navigate('Create Student')}
                       />
                     </View>  
@@ -152,7 +154,11 @@ const AdminPanel = ({navigation}) => {
                         }}
                         source={require("../../assets/prof1.jpg")}
                         />
-                        <Text style={styles.text1}>Add Teacher</Text>
+                        <Text style={styles.text1}></Text>
+                        <Button
+                        title="View Student"
+                        onPress={() => navigation.navigate('View Student')}
+                      />
                     </View>  
 
 
@@ -164,7 +170,11 @@ const AdminPanel = ({navigation}) => {
                         }}
                         source={require("../../assets/prof1.jpg")}
                         />
-                        <Text style={styles.text1}>Add Teacher</Text>
+                        <Text style={styles.text1}></Text>
+                        <Button
+                        title="      Add Fees       "
+                        onPress={() => navigation.navigate('Add Fees')}
+                      />
                     </View>  
 
 
@@ -176,7 +186,11 @@ const AdminPanel = ({navigation}) => {
                         }}
                         source={require("../../assets/prof1.jpg")}
                         />
-                        <Text style={styles.text1}>Add Teacher</Text>
+                        <Text style={styles.text1}></Text>
+                        <Button
+                        title="     View Fees     "
+                        onPress={() => navigation.navigate('View Fees')}
+                      />
                     </View>  
 
 
@@ -214,8 +228,8 @@ const AdminPanel = ({navigation}) => {
 
     return(
         <>
-
-            
+          <HomeScreen/>
+{/*             
 
               <Tab.Navigator
                  screenOptions={{
@@ -259,7 +273,7 @@ const AdminPanel = ({navigation}) => {
                 
                 />
               </Tab.Navigator>
-         
+          */}
         </>
     )
 }

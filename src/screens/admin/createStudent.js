@@ -11,6 +11,7 @@ import { useState } from 'react';
 // import {  } from 'react-native-paper';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { TextInput, Button,Text } from 'react-native-paper';
+// import DatePicker from 'react-date-picker';
 
 const styles = StyleSheet.create({
 
@@ -35,15 +36,23 @@ const CreateStudent = ({navigation}) => {
     const [resid,setResid] = useState("")
     
     const [date, setDate] = useState(new Date());
+    
+    const [dob, setDob] = useState(new Date());
+    
+    const [doa, setDoa] = useState(new Date());
     const [show, setShow] = useState(false);
 
 
     const onChange = (event, selectedDate) => {
       const currentDate = selectedDate || date;
       setShow(Platform.OS === 'ios');
-      setDate(currentDate);
+      setDob(currentDate);
     };
-
+    const oChange1 = (event, selectedDate) => {
+        const currentDate = selectedDate || date;
+        setShow(Platform.OS === 'ios');
+        setDoa(currentDate);
+      };
     const showDatepicker = () => {
         setShow(true);
       };
@@ -100,7 +109,10 @@ const CreateStudent = ({navigation}) => {
                 Residence:resid,
                 AdmissionClass:aClass,
                 Email:email,
-                Password:passw
+                Password:passw,
+                DoA:doa.toString(),
+                DoB:dob.toString(),                
+
 
               })
               .then(() => {
@@ -480,6 +492,51 @@ const CreateStudent = ({navigation}) => {
         onChangeText={setPassw}
         style={styles.input}
       />
+
+<TextInput
+        label="Date of birth"
+        value={dob}
+        onChangeText={setDob}
+        style={styles.input}
+      />
+
+<TextInput
+        label="Date of admission"
+        value={doa}
+        onChangeText={setDoa}
+        style={styles.input}
+      />
+
+                {/* <View>
+                    <Button onPress={showDatepicker} title="Select Date Of Birth" >Select Date of Birth</Button>
+                          {show && (
+                            <DateTimePicker
+                              testID="dateTimePicker"
+                              value={dob}
+                              mode="date"
+                              is24Hour={true}
+                              display="default"
+                              onChange={onChange}
+                            />
+                          )}
+                          <Text>Selected DOB: {dob.toDateString()}</Text>
+                    </View>
+
+                    <View>
+                    <Button onPress={showDatepicker} title="Select Date Of Admission" >Select Date of Admission</Button>
+                          {show && (
+                            <DateTimePicker
+                              testID="dateTimePickerz"
+                              value={doa}
+                              mode="date"
+                              is24Hour={true}
+                              display="default"
+                              onChange={oChange1}
+                            />
+                          )}
+                          <Text>Selected DOA: {doa.toDateString()}</Text>
+                    </View> */}
+
       <Button mode="contained" onPress={writeData} >
         Update
       </Button>

@@ -4,12 +4,12 @@ import { Title, Text } from 'react-native-paper';
 import firestore from '@react-native-firebase/firestore';
 import GlobalStyleSheet from '../../../GlobalStyleSheet';
 
-const StudentManageMarks = ({ navigation }) => {
+const StudentManageMarks = ({ navigation, route}) => {
     const [marks, setMarks] = useState(null);
     const [errorMessage, setErrorMessage] = useState('');
 
     // Hardcoded student name
-    const studentName = 'Abdullah Asim';
+    const studentName = route.params.id;
 
     useEffect(() => {
         const fetchMarks = async () => {
@@ -21,7 +21,7 @@ const StudentManageMarks = ({ navigation }) => {
                 // Query Firestore for the marks document with the given student's name
                 const marksSnapshot = await firestore()
                     .collection('Marks')
-                    .where('Name', '==', studentName)
+                    .where('studentId', '==', studentName)
                     .get();
 
                 if (marksSnapshot.empty) {

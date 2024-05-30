@@ -5,6 +5,8 @@ import { Button, Title } from 'react-native-paper';
 
 const StudentDashboard = ({ navigation, route }) => {
   const data = route.params.data
+  const id = route.params.id
+  
   return (
     <View style={GlobalStyleSheet.container}>
       <Title>Hi, {data.Name}</Title>
@@ -13,7 +15,7 @@ const StudentDashboard = ({ navigation, route }) => {
       mode='elevated'
       buttonColor='#875FF6'
       textColor='white'
-      onPress={() => navigation.navigate('Student Manage Marks')} 
+      onPress={() => navigation.navigate('Student Manage Marks', {id:id})} 
       style={GlobalStyleSheet.myButton}
       >
         Manage Marks

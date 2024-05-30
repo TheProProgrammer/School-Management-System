@@ -7,7 +7,7 @@ import {Image,View,Text,Alert,StyleSheet} from "react-native"
 import { firebase } from '@react-native-firebase/app';
 import GlobalStyleSheet from '../GlobalStyleSheet';
 
-import AdminPanel from './screens/admin/AssignClass';
+import AdminPanel from './screens/admin/ResultReport';
 import TeacherPanel from './screens/teacher/TeacherPanel';
 import StudentPanel from './screens/student/StudentPanel';
 import TeacherDashboard from './screens/teacher/TeacherDashboard';
